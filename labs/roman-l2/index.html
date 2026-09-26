@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>رحلة تلسكوب نانسي غريس رومان إلى L2</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Tahoma, sans-serif;
+    background:
+        radial-gradient(circle at 80% 20%, #18244d 0, transparent 25%),
+        radial-gradient(circle at 20% 80%, #071c35 0, transparent 30%),
+        #020711;
+    color: white;
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    text-align: center;
+    padding: 25px 15px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(22px, 4vw, 38px);
+}
+
+header .subtitle {
+    color: #a9bad1;
+    margin: 10px 0 0;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+header .education {
+    max-width: 950px;
+    margin: 16px auto 0;
+    color: #c5d4e6;
+    font-size: 15px;
+    line-height: 1.9;
+    padding: 12px 18px;
+    border: 1px solid rgba(72, 129, 180, 0.35);
+    background: rgba(7, 20, 38, 0.55);
+    border-radius: 12px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.wrapper {
+    width: min(1400px, 96%);
+    margin: auto;
+}
+
+.panel {
+    border: 1px solid #24466d;
+    background: rgba(4, 13, 28, 0.82);
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 0 35px rgba(0, 90, 180, 0.12);
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================
+   SPACE
+========================= */
+
+.star {
+    fill: white;
+    opacity: 0.75;
+}
+
+#transferPath {
+    fill: none;
+    stroke: #ffb536;
+    stroke-width: 4;
+    stroke-dasharray: 10 8;
+}
+
+#l2Orbit {
+    fill: none;
+    stroke: #cf66ff;
+    stroke-width: 3;
+    stroke-dasharray: 10 8;
+}
+
+#l2Orbit2 {
+    fill: none;
+    stroke: #8e5cff;
+    stroke-width: 1.5;
+    stroke-dasharray: 5 8;
+}
+
+/* =========================
+   STAGES
+========================= */
+
+.stages {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.stage {
+    border: 1px solid #284b73;
+    background: #071426;
+    border-radius: 12px;
+    padding: 12px 6px;
+    color: white;
+    cursor: pointer;
+    min-height: 78px;
+    transition: 0.25s;
+    font-size: 14px;
+}
+
+.stage span {
+    display: block;
+    color: #69baff;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.stage:hover {
+    background: #102b49;
+}
+
+.stage.active {
+    border-color: #bd64ff;
+    background: #291644;
+    box-shadow: 0 0 18px rgba(190, 90, 255, 0.45);
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.infoBox {
+    background: #071426;
+    border: 1px solid #24466d;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+.infoBox small {
+    display: block;
+    color: #8da4bd;
+    margin-bottom: 5px;
+}
+
+.infoBox strong {
+    font-size: 17px;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+    margin-top: 12px;
+    border: 1px solid #24466d;
+    border-radius: 14px;
+    padding: 16px;
+    background: #06111f;
+}
+
+.description h2 {
+    margin: 0 0 7px;
+    color: #70c4ff;
+}
+
+.description p {
+    margin: 0;
+    line-height: 1.8;
+    color: #cbd8e8;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px 0;
+}
+
+.controls button,
+.controls select {
+    border: 1px solid #35638d;
+    background: #0b2038;
+    color: white;
+    border-radius: 10px;
+    padding: 11px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background: #164a75;
+}
+
+#start {
+    background: #15558b;
+    font-weight: bold;
+}
+
+/* =========================
+   SCIENTIFIC NOTE
+========================= */
+
+.note {
+    color: #91a7bd;
+    font-size: 13px;
+    line-height: 1.9;
+    padding: 10px 15px 25px;
+    text-align: center;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 25px 10px 35px;
+    color: #a9bad1;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+footer strong {
+    color: white;
+    font-size: 18px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .stages {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header .education {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<h1>
+رحلة تلسكوب نانسي غريس رومان إلى L2
+</h1>
+
+<p class="subtitle">
+من الإطلاق من الأرض حتى الوصول إلى منطقة لاغرانج الثانية
+<br>
+ثم الاستمرار في المدار التشغيلي حول منطقة L2
+</p>
+
+<p class="education">
+
+محاكاة تعليمية تفاعلية توضح المراحل الرئيسية لرحلة
+تلسكوب نانسي غريس رومان من الأرض إلى منطقة لاغرانج الثانية (L2)،
+على بُعد يقارب 1.5 مليون كيلومتر من الأرض.
+
+<br>
+
+تساعد المحاكاة على فهم مراحل الإطلاق والانتقال الفضائي والوصول إلى L2،
+وكيف يواصل المرصد حركته في مدار تشغيلي حول هذه المنطقة
+بدلًا من البقاء ثابتًا عند نقطة واحدة.
+
+</p>
+
+</header>
+
+
+
+<div class="wrapper">
+
+
+<!-- =========================
+     SPACE SCENE
+========================= -->
+
+<div class="panel">
+
+<svg viewBox="0 0 1200 600">
+
+<defs>
+
+<radialGradient id="earthGradient">
+
+<stop
+    offset="0%"
+    stop-color="#47b9ff"
+/>
+
+<stop
+    offset="70%"
+    stop-color="#1263a5"
+/>
+
+<stop
+    offset="100%"
+    stop-color="#062b54"
+/>
+
+</radialGradient>
+
+</defs>
+
+
+<!-- STARS -->
+
+<g>
+
+<circle class="star" cx="70" cy="70" r="2"/>
+<circle class="star" cx="170" cy="130" r="1"/>
+<circle class="star" cx="270" cy="55" r="1.5"/>
+<circle class="star" cx="390" cy="100" r="2"/>
+<circle class="star" cx="510" cy="55" r="1"/>
+<circle class="star" cx="620" cy="120" r="1.5"/>
+<circle class="star" cx="740" cy="60" r="2"/>
+<circle class="star" cx="860" cy="100" r="1"/>
+<circle class="star" cx="1010" cy="60" r="2"/>
+<circle class="star" cx="1120" cy="150" r="1.5"/>
+
+<circle class="star" cx="300" cy="420" r="1"/>
+<circle class="star" cx="490" cy="500" r="2"/>
+<circle class="star" cx="690" cy="430" r="1"/>
+<circle class="star" cx="900" cy="500" r="1.5"/>
+
+</g>
+
+
+<!-- =========================
+     EARTH
+========================= -->
+
+<circle
+    cx="150"
+    cy="360"
+    r="82"
+    fill="url(#earthGradient)"
+/>
+
+
+<!-- CONTINENTS -->
+
+<path
+    d="
+    M105 320
+    Q145 285 190 320
+    Q170 345 130 345
+    Q110 338 105 320Z
+    "
+    fill="#43a56b"
+/>
+
+<path
+    d="
+    M120 375
+    Q155 350 185 375
+    Q170 410 135 420
+    Q115 405 120 375Z
+    "
+    fill="#4ba36c"
+/>
+
+
+<text
+    x="150"
+    y="470"
+    text-anchor="middle"
+    fill="white"
+    font-size="25"
+    font-weight="bold">
+
+الأرض
+
+</text>
+
+
+<!-- =========================
+     MOON
+========================= -->
+
+<circle
+    cx="265"
+    cy="325"
+    r="19"
+    fill="#bfc5cd"
+/>
+
+<text
+    x="265"
+    y="360"
+    text-anchor="middle"
+    fill="#9caabd"
+    font-size="14">
+
+القمر
+
+</text>
+
+
+<!-- =========================
+     TRANSFER PATH
+========================= -->
+
+<path
+    id="transferPath"
+    d="
+    M175 300
+    C300 100,
+    580 90,
+    900 290
+    "
+/>
+
+
+<!-- =========================
+     DISTANCE
+========================= -->
+
+<line
+    x1="240"
+    y1="490"
+    x2="940"
+    y2="490"
+    stroke="#8da4bd"
+    stroke-width="2"
+/>
+
+<line
+    x1="240"
+    y1="482"
+    x2="240"
+    y2="498"
+    stroke="#8da4bd"
+    stroke-width="2"
+/>
+
+<line
+    x1="940"
+    y1="482"
+    x2="940"
+    y2="498"
+    stroke="#8da4bd"
+    stroke-width="2"
+/>
+
+<text
+    x="590"
+    y="475"
+    text-anchor="middle"
+    fill="#d9e8fa"
+    font-size="20">
+
+≈ 1,500,000 كم
+
+</text>
+
+
+<!-- =========================
+     L2
+========================= -->
+
+<circle
+    cx="960"
+    cy="310"
+    r="10"
+    fill="#e267ff"
+/>
+
+<circle
+    cx="960"
+    cy="310"
+    r="25"
+    fill="none"
+    stroke="#c35cff"
+    stroke-width="2"
+    opacity="0.5"
+/>
+
+<text
+    x="960"
+    y="355"
+    text-anchor="middle"
+    fill="#e6b1ff"
+    font-size="28"
+    font-weight="bold">
+
+L2
+
+</text>
+
+
+<!-- =========================
+     L2 ORBIT
+========================= -->
+
+<ellipse
+    id="l2Orbit"
+    cx="960"
+    cy="310"
+    rx="150"
+    ry="82"
+/>
+
+<ellipse
+    id="l2Orbit2"
+    cx="960"
+    cy="310"
+    rx="105"
+    ry="57"
+/>
+
+<text
+    x="960"
+    y="420"
+    text-anchor="middle"
+    fill="#b99bcf"
+    font-size="16">
+
+المدار التشغيلي حول منطقة L2
+
+</text>
+
+
+<!-- =========================
+     SPACECRAFT
+========================= -->
+
+<g
+    id="spacecraft"
+    transform="translate(150 260)">
+
+
+<!-- BODY -->
+
+<rect
+    x="-13"
+    y="-22"
+    width="26"
+    height="44"
+    rx="5"
+    fill="#d9e0e8"
+/>
+
+
+<!-- TELESCOPE -->
+
+<circle
+    cx="0"
+    cy="-28"
+    r="10"
+    fill="#111827"
+    stroke="#ffffff"
+    stroke-width="2"
+/>
+
+
+<!-- SOLAR PANELS -->
+
+<rect
+    x="-65"
+    y="-9"
+    width="48"
+    height="18"
+    fill="#315bb0"
+    stroke="#7097e5"
+/>
+
+<rect
+    x="17"
+    y="-9"
+    width="48"
+    height="18"
+    fill="#315bb0"
+    stroke="#7097e5"
+/>
+
+
+<!-- ENGINE FLAME -->
+
+<path
+    id="flame"
+    d="
+    M-7 23
+    Q0 58
+    7 23 Z
+    "
+    fill="#ff9d20"
+    opacity="0"
+/>
+
+</g>
+
+
+<!-- =========================
+     STAGE LABELS
+========================= -->
+
+<g
+    fill="#e8f1ff"
+    font-size="16">
+
+<text x="190" y="235">
+① الإطلاق
+</text>
+
+<text x="300" y="165">
+② الصعود
+</text>
+
+<text x="420" y="120">
+③ فصل المراحل
+</text>
+
+<text x="555" y="125">
+④ مغادرة الأرض
+</text>
+
+<text x="720" y="170">
+⑤ الرحلة نحو L2
+</text>
+
+<text x="870" y="235">
+⑥ الوصول إلى L2
+</text>
+
+<text
+    x="960"
+    y="190"
+    text-anchor="middle">
+
+⑦ المدار حول L2
+
+</text>
+
+</g>
+
+
+</svg>
+
+</div>
+
+
+
+<!-- =========================
+     SEVEN STAGES
+========================= -->
+
+<div class="stages">
+
+
+<button
+    class="stage"
+    data-stage="0">
+
+<span>1</span>
+الإطلاق
+
+</button>
+
+
+<button
+    class="stage"
+    data-stage="1">
+
+<span>2</span>
+الصعود
+
+</button>
+
+
+<button
+    class="stage"
+    data-stage="2">
+
+<span>3</span>
+فصل المراحل
+
+</button>
+
+
+<button
+    class="stage"
+    data-stage="3">
+
+<span>4</span>
+مغادرة الأرض
+
+</button>
+
+
+<button
+    class="stage"
+    data-stage="4">
+
+<span>5</span>
+الرحلة نحو L2
+
+</button>
+
+
+<button
+    class="stage"
+    data-stage="5">
+
+<span>6</span>
+الوصول إلى L2
+
+</button>
+
+
+<button
+    class="stage"
+    data-stage="6">
+
+<span>7</span>
+المدار حول L2
+
+</button>
+
+
+</div>
+
+
+
+<!-- =========================
+     INFORMATION
+========================= -->
+
+<div class="info">
+
+
+<div class="infoBox">
+
+<small>
+المرحلة
+</small>
+
+<strong id="stageNumber">
+0 / 7
+</strong>
+
+</div>
+
+
+<div class="infoBox">
+
+<small>
+المسافة من الأرض
+</small>
+
+<strong id="distance">
+0 كم
+</strong>
+
+</div>
+
+
+<div class="infoBox">
+
+<small>
+زمن الرحلة
+</small>
+
+<strong id="missionTime">
+T + 0
+</strong>
+
+</div>
+
+
+<div class="infoBox">
+
+<small>
+الحالة
+</small>
+
+<strong id="status">
+جاهز للإطلاق
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     DESCRIPTION
+========================= -->
+
+<div class="description">
+
+<h2 id="title">
+
+تلسكوب نانسي غريس رومان جاهز للرحلة
+
+</h2>
+
+<p id="description">
+
+اضغط على زر "بدء المحاكاة"
+لمشاهدة رحلة التلسكوب من الأرض إلى منطقة L2.
+
+</p>
+
+</div>
+
+
+
+<!-- =========================
+     CONTROLS
+========================= -->
+
+<div class="controls">
+
+
+<button id="start">
+
+▶ بدء المحاكاة
+
+</button>
+
+
+<button id="pause">
+
+⏸ إيقاف مؤقت
+
+</button>
+
+
+<button id="reset">
+
+↻ إعادة
+
+</button>
+
+
+<select id="speed">
+
+<option value="3500">
+0.5 ×
+</option>
+
+<option
+    value="1900"
+    selected>
+1 ×
+</option>
+
+<option value="950">
+2 ×
+</option>
+
+<option value="400">
+5 ×
+</option>
+
+</select>
+
+
+</div>
+
+
+
+<!-- =========================
+     SCIENTIFIC NOTE
+========================= -->
+
+<div class="note">
+
+<strong>
+ملاحظة علمية:
+</strong>
+
+هذه محاكاة تعليمية مبسطة وليست محاكاة ملاحية دقيقة للمهمة.
+
+<br>
+
+النقطة L2 ليست جسمًا ماديًا يدور التلسكوب حوله
+مثل دوران القمر حول الأرض.
+
+<br>
+
+بعد الوصول إلى منطقة L2 يدخل المرصد في مدار تشغيلي
+حول منطقة لاغرانج الثانية،
+ولذلك تستمر الحركة في المرحلة السابعة
+بدلًا من توقف المركبة عند النقطة.
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+const spacecraft =
+document.getElementById("spacecraft");
+
+const flame =
+document.getElementById("flame");
+
+const stageNumber =
+document.getElementById("stageNumber");
+
+const distance =
+document.getElementById("distance");
+
+const missionTime =
+document.getElementById("missionTime");
+
+const status =
+document.getElementById("status");
+
+const title =
+document.getElementById("title");
+
+const description =
+document.getElementById("description");
+
+const speed =
+document.getElementById("speed");
+
+const stageButtons =
+document.querySelectorAll(".stage");
+
+
+
+/* =========================
+   MISSION STAGES
+========================= */
+
+const stages = [
+
+
+{
+
+title:
+"المرحلة الأولى: الإطلاق",
+
+description:
+"تشتعل محركات مركبة الإطلاق وتبدأ رحلة تلسكوب نانسي غريس رومان بعيدًا عن سطح الأرض.",
+
+distance:
+"10 كم",
+
+time:
+"T + دقائق",
+
+status:
+"الإطلاق",
+
+x: 180,
+
+y: 260,
+
+flame: true
+
+},
+
+
+{
+
+title:
+"المرحلة الثانية: الصعود عبر الغلاف الجوي",
+
+description:
+"تواصل مركبة الإطلاق الصعود عبر الغلاف الجوي، وتزداد سرعتها بينما تقل كثافة الهواء تدريجيًا.",
+
+distance:
+"≈ 100 كم",
+
+time:
+"T + دقائق",
+
+status:
+"الصعود",
+
+x: 300,
+
+y: 160,
+
+flame: true
+
+},
+
+
+{
+
+title:
+"المرحلة الثالثة: فصل المراحل",
+
+description:
+"بعد استهلاك الوقود تنفصل المراحل المستهلكة، مما يقلل كتلة مركبة الإطلاق ويسمح باستمرار الرحلة.",
+
+distance:
+"آلاف الكيلومترات",
+
+time:
+"T + دقائق",
+
+status:
+"فصل المراحل",
+
+x: 430,
+
+y: 115,
+
+flame: true
+
+},
+
+
+{
+
+title:
+"المرحلة الرابعة: بدء مغادرة الأرض",
+
+description:
+"بعد انتهاء مرحلة الإطلاق يبدأ تلسكوب رومان مسار الانتقال بعيدًا عن الأرض باتجاه منطقة لاغرانج الثانية.",
+
+distance:
+"مئات آلاف كم",
+
+time:
+"T + ساعات / أيام",
+
+status:
+"الانتقال",
+
+x: 560,
+
+y: 125,
+
+flame: false
+
+},
+
+
+{
+
+title:
+"المرحلة الخامسة: الرحلة نحو L2",
+
+description:
+"يواصل المرصد رحلته عبر الفضاء نحو منطقة L2، مع تنفيذ مناورات صغيرة لتصحيح المسار.",
+
+distance:
+"≈ 900,000 كم",
+
+time:
+"T + أسابيع",
+
+status:
+"الرحلة إلى L2",
+
+x: 720,
+
+y: 175,
+
+flame: false
+
+},
+
+
+{
+
+title:
+"المرحلة السادسة: الوصول إلى منطقة L2",
+
+description:
+"يصل تلسكوب رومان إلى منطقة لاغرانج الثانية للشمس والأرض، الواقعة على مسافة تقارب 1.5 مليون كيلومتر من الأرض.",
+
+distance:
+"≈ 1,500,000 كم",
+
+time:
+"الوصول إلى L2",
+
+status:
+"الوصول",
+
+x: 870,
+
+y: 235,
+
+flame: true
+
+},
+
+
+{
+
+title:
+"المرحلة السابعة: المدار التشغيلي حول L2",
+
+description:
+"لا يتوقف تلسكوب رومان عند L2، بل يستمر في الحركة في مدار تشغيلي حول منطقة لاغرانج الثانية. تستمر الحركة في هذه المحاكاة حتى يتم إيقافها.",
+
+distance:
+"≈ 1.5 مليون كم",
+
+time:
+"بعد الوصول",
+
+status:
+"يدور حول L2",
+
+x: 1110,
+
+y: 310,
+
+flame: false
+
+}
+
+];
+
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentStage = -1;
+
+let timer = null;
+
+let orbitAnimation = null;
+
+let paused = false;
+
+let orbitAngle = 0;
+
+let lastFrame = 0;
+
+
+
+/* =========================
+   HIGHLIGHT STAGE
+========================= */
+
+function highlightStage(index) {
+
+    stageButtons.forEach(
+        (button, i) => {
+
+            button.classList.toggle(
+                "active",
+                i === index
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   SHOW STAGE
+========================= */
+
+function showStage(index) {
+
+    stopOrbit();
+
+    currentStage = index;
+
+    const stage =
+    stages[index];
+
+
+    spacecraft.setAttribute(
+        "transform",
+        `translate(${stage.x} ${stage.y})`
+    );
+
+
+    flame.setAttribute(
+        "opacity",
+        stage.flame ? "1" : "0"
+    );
+
+
+    stageNumber.textContent =
+    (index + 1) + " / 7";
+
+
+    distance.textContent =
+    stage.distance;
+
+
+    missionTime.textContent =
+    stage.time;
+
+
+    status.textContent =
+    stage.status;
+
+
+    title.textContent =
+    stage.title;
+
+
+    description.textContent =
+    stage.description;
+
+
+    highlightStage(index);
+
+
+    if (index === 6) {
+
+        startOrbit();
+
+    }
+
+}
+
+
+
+/* =========================
+   START SIMULATION
+========================= */
+
+function startSimulation() {
+
+    stopAll();
+
+    paused = false;
+
+    currentStage = -1;
+
+    orbitAngle = 0;
+
+
+    document
+    .getElementById("pause")
+    .textContent =
+    "⏸ إيقاف مؤقت";
+
+
+    nextStage();
+
+}
+
+
+
+/* =========================
+   NEXT STAGE
+========================= */
+
+function nextStage() {
+
+    if (paused) {
+        return;
+    }
+
+
+    if (currentStage < 6) {
+
+        showStage(
+            currentStage + 1
+        );
+
+
+        if (currentStage < 6) {
+
+            timer =
+            setTimeout(
+                nextStage,
+                Number(speed.value)
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================
+   CONTINUOUS ORBIT AROUND L2
+========================= */
+
+function startOrbit() {
+
+    stopOrbit();
+
+    lastFrame =
+    performance.now();
+
+
+    function animate(now) {
+
+        if (paused) {
+
+            orbitAnimation =
+            null;
+
+            return;
+
+        }
+
+
+        const delta =
+        Math.min(
+            60,
+            now - lastFrame
+        );
+
+
+        lastFrame = now;
+
+
+        orbitAngle +=
+        delta * 0.00045;
+
+
+        const centerX =
+        960;
+
+        const centerY =
+        310;
+
+        const radiusX =
+        150;
+
+        const radiusY =
+        82;
+
+
+        const x =
+        centerX +
+        radiusX *
+        Math.cos(orbitAngle);
+
+
+        const y =
+        centerY +
+        radiusY *
+        Math.sin(orbitAngle);
+
+
+        const rotation =
+        orbitAngle *
+        180 /
+        Math.PI +
+        90;
+
+
+        spacecraft.setAttribute(
+            "transform",
+            `translate(${x} ${y}) rotate(${rotation})`
+        );
+
+
+        orbitAnimation =
+        requestAnimationFrame(
+            animate
+        );
+
+    }
+
+
+    orbitAnimation =
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+
+/* =========================
+   STOP ORBIT
+========================= */
+
+function stopOrbit() {
+
+    if (orbitAnimation) {
+
+        cancelAnimationFrame(
+            orbitAnimation
+        );
+
+        orbitAnimation =
+        null;
+
+    }
+
+}
+
+
+
+/* =========================
+   STOP EVERYTHING
+========================= */
+
+function stopAll() {
+
+    if (timer) {
+
+        clearTimeout(timer);
+
+        timer = null;
+
+    }
+
+    stopOrbit();
+
+}
+
+
+
+/* =========================
+   PAUSE / CONTINUE
+========================= */
+
+document
+.getElementById("pause")
+.addEventListener(
+    "click",
+    function() {
+
+        if (!paused) {
+
+            paused = true;
+
+            stopAll();
+
+            this.textContent =
+            "▶ متابعة";
+
+            status.textContent =
+            "متوقف مؤقتًا";
+
+        }
+
+        else {
+
+            paused = false;
+
+            this.textContent =
+            "⏸ إيقاف مؤقت";
+
+
+            if (currentStage === 6) {
+
+                status.textContent =
+                "يدور حول L2";
+
+                startOrbit();
+
+            }
+
+            else {
+
+                timer =
+                setTimeout(
+                    nextStage,
+                    Number(speed.value)
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =========================
+   RESET
+========================= */
+
+document
+.getElementById("reset")
+.addEventListener(
+    "click",
+    resetSimulation
+);
+
+
+function resetSimulation() {
+
+    stopAll();
+
+    paused = false;
+
+    currentStage = -1;
+
+    orbitAngle = 0;
+
+
+    spacecraft.setAttribute(
+        "transform",
+        "translate(150 260)"
+    );
+
+
+    flame.setAttribute(
+        "opacity",
+        "0"
+    );
+
+
+    stageNumber.textContent =
+    "0 / 7";
+
+
+    distance.textContent =
+    "0 كم";
+
+
+    missionTime.textContent =
+    "T + 0";
+
+
+    status.textContent =
+    "جاهز للإطلاق";
+
+
+    title.textContent =
+    "تلسكوب نانسي غريس رومان جاهز للرحلة";
+
+
+    description.textContent =
+    'اضغط على زر "بدء المحاكاة" لمشاهدة رحلة التلسكوب من الأرض إلى منطقة L2.';
+
+
+    document
+    .getElementById("pause")
+    .textContent =
+    "⏸ إيقاف مؤقت";
+
+
+    highlightStage(-1);
+
+}
+
+
+
+/* =========================
+   START BUTTON
+========================= */
+
+document
+.getElementById("start")
+.addEventListener(
+    "click",
+    startSimulation
+);
+
+
+
+/* =========================
+   MANUAL STAGE SELECTION
+========================= */
+
+stageButtons.forEach(
+
+    button => {
+
+        button.addEventListener(
+
+            "click",
+
+            function() {
+
+                stopAll();
+
+                paused = false;
+
+
+                document
+                .getElementById("pause")
+                .textContent =
+                "⏸ إيقاف مؤقت";
+
+
+                const index =
+                Number(
+                    this.dataset.stage
+                );
+
+
+                showStage(index);
+
+            }
+
+        );
+
+    }
+
+);
+
+</script>
+
+
+<!-- =========================
+     AUTHOR
+========================= -->
+
+<footer>
+
+<strong>
+عمار السكجي
+</strong>
+
+<br>
+
+الجمعية الفلكية الأردنية
+
+</footer>
+
+
+</body>
+
+</html>
